@@ -8,4 +8,6 @@ urlpatterns = [
     path('search/', views.search_movies, name='search'),
     path('create/', views.create_movie, name='create'), # adicione esta linha
     path('<int:movie_id>/', views.detail_movie, name='detail'),
+    path('update/<int:movie_id>/', views.update_movie, name='update'),
+    path('delete/<int:movie_id>/', views.delete_movie, name='delete'),
 ]
