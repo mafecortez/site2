@@ -2,13 +2,15 @@ from django.db import models
 from django.conf import settings
 
 
-class Movie(models.Model):
+class Post(models.Model):
     name = models.CharField(max_length=255)
-    release_year = models.IntegerField()
+    text = models.TextField()
     poster_url = models.URLField(max_length=200, null=True)
+    post_date = models.DateTimeField(auto_now_add=True)  
+
 
     def __str__(self):
-        return f'{self.name} ({self.release_year})'
+        return f'{self.name}'
 
 
 class Review(models.Model):
@@ -16,7 +18,7 @@ class Review(models.Model):
                                on_delete=models.CASCADE)
     text = models.CharField(max_length=255)
     likes = models.IntegerField(default=0)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    #post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'"{self.text}" - {self.author.username}'

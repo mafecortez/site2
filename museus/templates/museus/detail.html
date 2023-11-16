@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% block title %}
+  {{ post.name }}
+{% endblock title %}
+{% block content %}
+<h2>Detalhes do Museu {{ post.name }}</h2>
+<section class="dados-de-filme">
+  <img src="{{ post.poster_url }}" alt="Poster do filme {{ post.name}}" />
+  <ul>
+    <li>Nome: {{ post.name }}</li>
+    <hr>
+    <li>Descrição: {{ post.text }}</li>
+    <hr>
+    <li>Data da postagem: {{ post.post_date }}</li>
+    <hr>
+    <li><a href="{% url 'museus:update' post.id %}">Editar</a></li>
+    <li><a href="{% url 'museus:delete' post.id %}">Apagar</a></li>
+  </ul>
+</section>
+{% endblock content %}
