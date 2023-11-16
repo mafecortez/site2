@@ -8,6 +8,8 @@ from .models import Post
 from .forms import PostForm
 from django.views import generic
 from django.urls import reverse_lazy
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
 class PostListView(generic.ListView):
     model = Post
@@ -16,6 +18,7 @@ class PostListView(generic.ListView):
 class PostDetailView(generic.DetailView):
     model = Post
     template_name = 'museus/detail.html'
+    
 
 def search_posts(request):
     context = {}
@@ -42,3 +45,21 @@ class PostDeleteView(generic.DeleteView):
     fields = ["name", "text", "poster_url"]
     template_name = 'museus/delete.html'
     success_url = reverse_lazy('museus:index')
+    
+def create_comment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment_author = form.cleaned_data['author']
+            comment_text = form.cleaned_data['text']
+            comment = Comment(author=comment_author,
+                            text=comment_text,
+                            post=post)
+            comment.save()
+            return HttpResponseRedirect(
+                reverse('museus:detail', args=(post_id, )))
+    else:
+        form = CommentForm()
+    context = {'form': form, 'post': post}
+    return render(request, 'museus/comment.html', context)

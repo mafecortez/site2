@@ -17,4 +17,29 @@
     <li><a href="{% url 'museus:delete' post.id %}">Apagar</a></li>
   </ul>
 </section>
+
+<hr>
+
+<section>
+    <h3>Comentários</h3>
+    <ul>
+        {% if post.comment_set.all %}
+            {% for comment in post.comment_set.all %}
+                <figure>
+                    <blockquote>
+                        "{{ comment.text }}"
+                    </blockquote>
+                    <figcaption>—{{ comment.author }}  ({{comment.post_date}})</figcaption>
+                </figure>
+            {% endfor %}
+        {% else %}
+            <p>Ainda não existe nenhum comentário para este museu.</p>
+        {% endif %}
+      </ul>
+    
+      <hr>
+  
+    <a href="{% url 'museus:comment' post.pk %}"><button>Crie seu Comentário</button></a>
+  </section>
+
 {% endblock content %}
