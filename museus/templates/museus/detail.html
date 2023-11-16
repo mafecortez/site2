@@ -11,7 +11,7 @@
     <hr>
     <li>Descrição: {{ post.text }}</li>
     <hr>
-    <li>Data da postagem: {{ post.post_date }}</li>
+    <li>Data do post: {{ post.post_date }}</li>
     <hr>
     <li><a href="{% url 'museus:update' post.id %}">Editar</a></li>
     <li><a href="{% url 'museus:delete' post.id %}">Apagar</a></li>
