@@ -23,8 +23,8 @@
 <section>
     <h3>Comentários</h3>
     <ul>
-        {% if post.comment_set.all %}
-            {% for comment in post.comment_set.all %}
+        {% if comments %}
+            {% for comment in comments %}
                 <figure>
                     <blockquote>
                         "{{ comment.text }}"
