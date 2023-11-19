@@ -16,12 +16,12 @@
 
 <body>
     <header id="cabecalho-principal">
-        <h1>MuseuSP</h1>
+        <h1 class="titulo" onclick="window.location.href='{% url 'index' %}'" style="cursor: pointer;">MuseuSP</h1>
         <nav>
             <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'museus:index' %}">Museus</a></li>
                 <li><a href="{% url 'about' %}">Sobre</a></li>
+                <li><a href="{% url 'museus:index' %}">Museus</a></li>
+                <li><a href="{% url 'museus:categories' %}">Categorias</a></li>
             </ul>
         </nav>
     </header>

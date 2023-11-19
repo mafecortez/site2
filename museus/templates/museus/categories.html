@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Categorias
+{% endblock title %}
+
+{% block content %}
+<h2>Categorias de Museus</h2>
+
+<section class="lista-de-cards">
+    {% for category in category_list %}
+    <article class="card">
+        <a href="{% url 'museus:detail-cat' category.id %}"> 
+            <p>{{ category.name }}</p>
+        </a>
+    </article>
+    {% endfor %}
+  </section>
+{% endblock content %}
