@@ -10,7 +10,7 @@ Categorias
 <section class="lista-de-cards">
     {% for category in category_list %}
     <article class="card">
-        <a href="{% url 'museus:detail-category' category.id %}"> 
+        <a href="{% url 'museus:detail-cat' category.id %}"> 
             <p>{{ category.name }}</p>
         </a>
     </article>

@@ -14,7 +14,12 @@
     <li>Data do post: {{ post.post_date }}</li>
     <hr>
     {% if post.category_set.all %}
-        <li>Incluso nas categorias: {{ post.category_set.all|join:", " }} </li>
+        <li>Incluso nas categorias:</li>
+        <p> {% for category in post.category_set.all %}
+          <a href="{% url 'museus:detail-cat' category.id %}">{{ category.name }}</a>
+          {% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
         <hr>
     {% endif %}
     <li><a href="{% url 'museus:update' post.id %}">Editar</a></li>

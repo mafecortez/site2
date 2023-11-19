@@ -76,4 +76,4 @@ class CategoryListView(generic.ListView):
 
 class CategoryDetailView(generic.DetailView):
     model = Category
-    template_name = 'museus/detail_category.html'
+    template_name = 'museus/detail_cat.html'

@@ -26,7 +26,7 @@ class Comment(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=255)
     content = models.TextField() 
-    movies = models.ManyToManyField(Post)
+    posts = models.ManyToManyField(Post)
 
     def __str__(self):
         return f'{self.name}'
