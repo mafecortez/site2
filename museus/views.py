@@ -8,7 +8,7 @@ from .models import Post
 from .forms import PostForm
 from django.views import generic
 from django.urls import reverse_lazy
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from .forms import PostForm, CommentForm
 
 class PostListView(generic.ListView):
@@ -68,3 +68,12 @@ def create_comment(request, post_id):
         form = CommentForm()
     context = {'form': form, 'post': post}
     return render(request, 'museus/comment.html', context)
+
+class CategoryListView(generic.ListView):
+    model = Category
+    template_name = 'museus/categories.html'
+
+
+class CategoryDetailView(generic.DetailView):
+    model = Category
+    template_name = 'museus/detail_cat.html'

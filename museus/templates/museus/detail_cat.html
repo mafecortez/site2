@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %} {{ post.title }} {% endblock title %} {% block content %}
+<h2>Museus da Categoria {{ post.title }}</h2>
+
+  <ul>
+    <li><b>Nome:</b> {{ category.name }}</li>
+    <hr>
+    <li><b>Descrição:</b> {{ category.content }}</li>
+<hr>
+
+{% if category.posts.all %}
+<section class="lista-de-cards">
+    {% for post in category.posts.all %}
+    <article class="card">
+      <a href="{% url 'museus:detail' post.id %}"> <!-- modifique esta linha -->
+          <img src="{{ post.poster_url }}" alt="Foto do Museu {{ post.title }}" />
+      </a>
+      <p>{{ post.name }}</p>
+    </article>
+    {% endfor %}
+  </section>
+  {% else %}
+  <p>Não foi encontrado nenhum museu.</p>
+  {% endif %} {% endblock content %}
