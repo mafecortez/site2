@@ -71,11 +71,9 @@ def create_comment(request, post_id):
 
 class CategoryListView(generic.ListView):
     model = Category
-    template_name = 'museus/list.html'
+    template_name = 'museus/categories.html'
 
 
-class CategoryCreateView(generic.CreateView):
+class CategoryDetailView(generic.DetailView):
     model = Category
-    template_name = 'museus/create_list.html'
-    fields = ['name', 'author', 'posts']
-    success_url = reverse_lazy('museus:lists')
+    template_name = 'museus/detail_category.html'
