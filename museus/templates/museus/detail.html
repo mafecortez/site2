@@ -13,6 +13,10 @@
     <hr>
     <li>Data do post: {{ post.post_date }}</li>
     <hr>
+    {% if post.list_set.all %}
+        <li>Incluso nas categorias: {{ post.list_set.all|join:", " }} </li>
+        <hr>
+    {% endif %}
     <li><a href="{% url 'museus:update' post.id %}">Editar</a></li>
     <li><a href="{% url 'museus:delete' post.id %}">Apagar</a></li>
   </ul>
